@@ -26,7 +26,7 @@ section {
 
 /* HEADER - Design Minimaliste */
 header {
-  background-color: #0ea497; /* Vert principal d'Echome [cite: 2025-07-24] */
+  background-color: #0ea497; /* Vert principal d'Echome */
   color: #fff;
   padding: 30px 20px; /* Padding suffisant */
   text-align: center; /* Centrage général pour le texte */
@@ -48,7 +48,7 @@ header {
   max-width: 140px; /* Taille du logo encore réduite pour la subtilité */
   height: auto;
   display: block; /* S'assure que margin: auto fonctionne pour centrer l'image elle-même */
-  margin: 0 auto; /* **NOUVEAU : Centrage du logo lui-même** */
+  margin: 0 auto; /* Centrage du logo lui-même */
 }
 
 .header-text-content { /* Renommé et adapté pour son nouveau rôle */
@@ -103,6 +103,20 @@ header {
   background-color: #d4f5f1;
   transform: translateY(-8px); /* Effet de soulèvement plus visible */
   box-shadow: 0 8px 30px rgba(0,0,0,0.1); /* Ombre plus marquée au survol */
+}
+
+/* Nouveau : Style pour les quiz complétés */
+.quiz-card.quiz-card-completed {
+  background-color: #cce9e6; /* Une couleur distincte pour les quiz complétés */
+  border-color: #0b8c80; /* Bordure plus foncée */
+  color: #0b8c80; /* Texte légèrement plus foncé */
+  cursor: default; /* Plus de curseur de pointeur */
+  opacity: 0.8; /* Légèrement estompé pour montrer qu'il est "terminé" */
+}
+
+.quiz-card.quiz-card-completed:hover {
+  transform: none; /* Pas d'effet au survol */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03); /* Réinitialiser l'ombre */
 }
 
 /* QUIZ CONTAINER */
