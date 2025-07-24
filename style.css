@@ -1,0 +1,314 @@
+/* POLICE ET RESET GLOBAL */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f8fcfb; /* Un fond très clair, presque blanc, pour un look épuré */
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Conteneur principal pour centrer le contenu */
+main {
+  max-width: 960px; /* Largeur optimale pour la lecture et l'esthétique */
+  margin: 30px auto; /* Centre le contenu et ajoute de l'espace vertical */
+  padding: 0 20px; /* Padding latéral pour éviter que le contenu ne touche les bords */
+}
+
+/* Styles généraux pour les sections (cartes) */
+section {
+  background-color: #ffffff; /* Fond blanc pur pour les sections */
+  padding: 40px;
+  border-radius: 10px; /* Coins arrondis pour un aspect moderne */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07); /* Ombre plus douce et diffuse */
+  margin-bottom: 30px; /* Espacement entre les sections */
+}
+
+/* HEADER - Design Minimaliste */
+header {
+  background-color: #0ea497; /* Vert principal d'Echome [cite: 2025-07-24] */
+  color: #fff;
+  padding: 30px 20px; /* Padding suffisant */
+  text-align: center; /* Centrage général pour le texte */
+  margin-bottom: 40px; /* Plus d'espace sous l'en-tête */
+  display: flex; /* Utilisation de flexbox pour aligner le logo et le texte */
+  flex-direction: column; /* Empilement par défaut (mobile first) */
+  align-items: center; /* Centrage horizontal des éléments empilés */
+  justify-content: center; /* Centrage vertical si nécessaire (pas vraiment applicable ici avec le column) */
+}
+
+.logo-container {
+  max-width: 960px; /* Aligne la largeur max avec le header-text-content */
+  width: 100%;
+  margin: 0 auto; /* Centrage du conteneur du logo */
+  padding-bottom: 10px; /* Espace sous le logo */
+}
+
+.logo {
+  max-width: 140px; /* Taille du logo encore réduite pour la subtilité */
+  height: auto;
+  display: block; /* S'assure que margin: auto fonctionne pour centrer l'image elle-même */
+  margin: 0 auto; /* **NOUVEAU : Centrage du logo lui-même** */
+}
+
+.header-text-content { /* Renommé et adapté pour son nouveau rôle */
+  max-width: 960px;
+  margin: 0 auto; /* Centrage du conteneur de texte */
+  text-align: center; /* Le texte reste centré */
+  padding-top: 10px; /* Espace au-dessus du bloc de texte */
+}
+
+.header-text-content h1 {
+  font-size: 36px; /* Titre plus grand pour l'impact */
+  margin: 0 0 10px 0; /* Ajustement des marges */
+  color: #fff;
+}
+
+.header-text-content p {
+  font-size: 17px;
+  opacity: 0.9;
+  margin-bottom: 10px;
+}
+
+.header-text-content .tagline {
+  font-weight: 600;
+  margin-top: 20px; /* Plus d'espace pour la tagline */
+  border-top: 1px solid rgba(255, 255, 255, 0.3); /* Ligne de séparation subtile */
+  padding-top: 15px;
+  font-size: 16px;
+}
+
+/* QUIZ SELECTION - Design des cartes */
+.quiz-selection {
+  display: grid; /* Utilisation de Grid pour un meilleur contrôle des cartes */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3 colonnes flexibles */
+  gap: 25px; /* Espacement généreux entre les cartes */
+  padding: 0; /* Les sections ont déjà un padding */
+}
+
+.quiz-card {
+  background: #eafaf8; /* Fond doux */
+  border: 1px solid #cce9e6; /* Bordure subtile */
+  border-radius: 8px;
+  padding: 30px; /* Plus de padding pour un aspect plus riche */
+  cursor: pointer;
+  font-weight: 600;
+  color: #0ea497;
+  transition: all 0.3s ease; /* Transition plus douce */
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03); /* Ombre très légère */
+}
+
+.quiz-card:hover {
+  background-color: #d4f5f1;
+  transform: translateY(-8px); /* Effet de soulèvement plus visible */
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1); /* Ombre plus marquée au survol */
+}
+
+/* QUIZ CONTAINER */
+.quiz-container {
+  max-width: 760px; /* Largeur ajustée pour le quiz */
+  margin: 0 auto;
+  padding: 40px;
+  animation: fadeIn 0.4s ease;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+}
+
+.question {
+  font-size: 22px; /* Question plus grande */
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #0ea497;
+}
+
+.options label {
+  display: block;
+  background: #f8fcfb;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 15px 20px; /* Plus de padding */
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  font-size: 16px;
+}
+
+.options label:hover {
+  background: #eafaf8;
+  border-color: #0ea497;
+}
+
+.options input[type="radio"] {
+  margin-right: 12px; /* Plus d'espace */
+  transform: scale(1.2); /* Rendre les radios un peu plus visibles */
+  vertical-align: middle; /* Alignement vertical */
+}
+
+button {
+  background-color: #0ea497;
+  color: #fff;
+  border: none;
+  padding: 16px 30px; /* Boutons plus grands */
+  border-radius: 8px; /* Plus arrondis */
+  font-size: 18px;
+  margin-top: 30px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #0b8c80;
+  transform: translateY(-3px); /* Effet de soulèvement plus marqué */
+}
+
+.result {
+  font-size: 26px; /* Score plus grand */
+  font-weight: 700;
+  color: #0ea497;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.explanation {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #f0f8f7;
+    border-left: 5px solid #0ea497; /* Bordure plus épaisse */
+    border-radius: 6px;
+    font-size: 16px;
+    color: #444;
+}
+
+/* Pour les options correctes et incorrectes après réponse */
+.options label.correct {
+  background-color: #d4f5f1;
+  border-color: #0ea497;
+  font-weight: 600;
+}
+.options label.incorrect {
+  background-color: #ffe0e0;
+  border-color: #ff6666;
+  font-weight: 600;
+}
+
+
+/* CONTACT FORM */
+.contact-section h2 {
+  color: #0ea497;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 28px;
+}
+.contact-section p {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #555;
+    font-size: 16px;
+}
+
+.contact-section form {
+  max-width: 600px; /* Formulaire plus large pour un meilleur remplissage */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* Espacement entre les champs */
+}
+
+.contact-section input,
+.contact-section textarea {
+  padding: 15px;
+  border-radius: 8px; /* Coins plus arrondis */
+  border: 1px solid #ccc;
+  font-size: 17px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contact-section textarea {
+  resize: vertical;
+}
+
+.contact-section button {
+  width: auto; /* La largeur sera ajustée par le padding */
+  margin: 25px auto 0 auto;
+  padding: 16px 35px;
+  font-size: 18px;
+}
+
+
+/* FOOTER - ULTRA-MINIMALISTE ET PRÉCIS */
+footer {
+  background: #333; /* Fond sombre pour un contraste fort */
+  color: white;
+  padding: 30px 20px; /* Padding vertical pour aérer */
+  font-size: 15px;
+  text-align: center;
+  margin-top: 50px; /* Espace significatif au-dessus du footer */
+}
+
+.footer-contact-info {
+  max-width: 600px; /* Limite la largeur des infos de contact */
+  margin: 0 auto;
+  line-height: 1.8; /* Plus d'espace entre les lignes pour la lisibilité */
+}
+
+.footer-contact-info p {
+  margin-bottom: 0; /* Pas de marge entre les lignes d'adresse */
+}
+
+.footer-contact-info a {
+  color: #a7e0d8; /* Vert pâle d'Echome pour les liens */
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-weight: 500; /* Texte des liens légèrement plus épais */
+}
+
+.footer-contact-info a:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+.copyright {
+    margin-top: 25px; /* Espace clair pour le copyright */
+    font-size: 13px;
+    opacity: 0.7; /* Moins prononcé pour le copyright */
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (min-width: 769px) {
+  /* Le header reste en column car le logo est séparé du texte */
+  /* align-items: center et justify-content: center sur le header suffisent */
+}
+
+@media (max-width: 768px) {
+  .header-text-content h1 {
+      font-size: 28px;
+  }
+  .header-text-content p {
+      font-size: 15px;
+  }
+  section {
+      padding: 30px 15px; /* Padding réduit sur mobile */
+  }
+  .quiz-selection {
+    grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+  }
+  .quiz-card {
+    width: auto; /* S'adapte à la largeur de la colonne */
+  }
+  .contact-section button {
+      width: 100%;
+      padding: 15px 20px;
+  }
+  .footer-contact-info {
+      padding: 0 10px; /* Padding réduit pour le footer sur mobile */
+  }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz Echome Énergies</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="echome energies fond blanc.jpg" alt="Logo Echome Énergies" class="logo" />
+    </div>
+    <div class="header-text-content">
+      <h1>Testez vos connaissances</h1>
+      <p>Découvrez le monde de l'autonomie solaire et de la mobilité électrique avec nos quiz interactifs.</p>
+      <p class="tagline">Echome Énergies : L'expert local de votre autonomie solaire et mobilité électrique.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="quiz-selection" id="quiz-selection-section">
+      <div class="quiz-card" data-quiz-id="1">Le B.A.-BA du Solaire</div>
+      <div class="quiz-card" data-quiz-id="2">Bornes de Recharge IRVE</div>
+      <div class="quiz-card" data-quiz-id="3">Autoconsommation Collective & PMO</div>
+      <div class="quiz-card" data-quiz-id="4">Mythes ou Réalités sur l’Énergie Solaire ?</div>
+      <div class="quiz-card" data-quiz-id="5">Echome Énergies et ses Qualifications</div>
+    </section>
+
+    <section id="quiz-container" class="quiz-container" style="display: none;"></section>
+
+    <section class="contact-section">
+      <h2>Un projet solaire ou IRVE ? Contactez-nous !</h2>
+      <p>Nos solutions certifiées RGE pour l'indépendance énergétique, la performance durable et l'impact local.</p>
+      <form action="https://formsubmit.co/contact@echome-energies.fr" method="POST">
+        <input type="text" name="name" placeholder="Votre nom" required />
+        <input type="email" name="email" placeholder="Votre email" required />
+        <textarea name="message" placeholder="Votre message" rows="4" required></textarea>
+        <button type="submit">Envoyer votre message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-contact-info">
+        <p>
+            **Echome Énergies**<br>
+            1159 Rue de la Galandrine<br>
+            38210 Saint-Quentin-sur-Isère<br>
+            Tél : 04 76 37 34 62<br>
+            E-mail : <a href="mailto:contact@echome-energies.fr">contact@echome-energies.fr</a><br>
+            Site web : <a href="https://echome-energies.fr" target="_blank">echome-energies.fr</a>
+        </p>
+        <p class="copyright">&copy; 2025 Echome Énergies. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
