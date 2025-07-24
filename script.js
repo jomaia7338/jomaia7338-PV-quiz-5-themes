@@ -147,7 +147,7 @@ const quizData = {
         question: "Quel est le cœur de métier d’Echome Énergies ?",
         options: ["Plomberie", "Énergie solaire et mobilité électrique", "Isolation thermique"],
         answer: 1,
-        explanation: "Echome est expert local des solutions solaires photovoltaïques et des bornes de recharge IRVE [cite: 2025-07-24]."
+        explanation: "Echome est expert local des solutions solaires photovoltaïques et des bornes de recharge IRVE."
       },
       {
         question: "Que garantit la certification RGE ?",
@@ -159,19 +159,19 @@ const quizData = {
         question: "Quelles qualifications possède Echome ?",
         options: ["QualiPV 36 & 500, QualiPV Elec, Recharge Elec+", "IRVE+, QualiBois", "Eco Artisan"],
         answer: 0,
-        explanation: "Echome est certifié pour les installations photovoltaïques (jusqu’à 500 kVA) et IRVE avec intégration solaire [cite: 2025-07-24]."
+        explanation: "Echome est certifié pour les installations photovoltaïques (jusqu’à 500 kVA) et IRVE avec intégration solaire."
       },
       {
         question: "Quel est le rôle d’Echome après l’installation ?",
         options: ["Aucun", "Maintenance & supervision énergétique", "Vente de panneaux"],
         answer: 1,
-        explanation: "Echome assure le suivi, la maintenance, et l’optimisation énergétique post-installation [cite: 2025-07-24]."
+        explanation: "Echome assure le suivi, la maintenance, et l’optimisation énergétique post-installation."
       },
       {
         question: "Quel est le message principal d’Echome ?",
         options: ["Changer le monde", "Produire, consommer, recharger — en toute confiance", "Faire des économies à tout prix"],
         answer: 1,
-        explanation: "Echome accompagne ses clients vers l’indépendance énergétique, avec une approche durable et locale [cite: 2025-07-24]."
+        explanation: "Echome accompagne ses clients vers l’indépendance énergétique, avec une approche durable et locale."
       }
     ]
   },
@@ -183,6 +183,7 @@ const quizSelectionSection = document.getElementById("quiz-selection-section");
 let currentQuizId = null; // Pour stocker l'ID du quiz en cours
 let currentQuestionIndex = 0;
 let score = 0;
+let completedQuizzesScores = {}; // Nouveau : Pour stocker les scores de chaque quiz { quizId: score }
 
 // Fonction pour afficher une question spécifique d'un quiz
 function showQuestion(quizId) {
@@ -256,6 +257,8 @@ function moveToNextOrFinish() {
 // Affiche les résultats du quiz
 function showResults(quizId) {
   const quiz = quizData[quizId];
+  completedQuizzesScores[quizId] = score; // Nouveau : Enregistrer le score du quiz
+
   quizContainer.innerHTML = `
     <div class="result">Votre score : ${score} / ${quiz.questions.length}</div>
     <p>${score === quiz.questions.length ? "Bravo ! Vous maîtrisez parfaitement le sujet du " + quiz.title + " !" : "Merci pour votre participation. Continuez à apprendre et n'hésitez pas à nous contacter pour plus d'informations sur l'autonomie solaire et la mobilité électrique !"}</p>
@@ -279,7 +282,54 @@ function restartQuiz() {
 function backToSelection() {
   quizContainer.style.display = "none";
   quizSelectionSection.style.display = "grid"; // Réafficher la sélection des quiz en grille
-  currentQuizId = null; // Réinitialiser l'ID du quiz en cours
+  
+  if (currentQuizId !== null) { // Si un quiz a été complété
+      const completedCard = document.querySelector(`.quiz-card[data-quiz-id="${currentQuizId}"]`);
+      if (completedCard) {
+          completedCard.classList.add('quiz-card-completed');
+          const quizTitle = quizData[currentQuizId].title;
+          const totalQuestions = quizData[currentQuizId].questions.length;
+          completedCard.textContent = `${quizTitle} (Votre score: ${completedQuizzesScores[currentQuizId]}/${totalQuestions})`;
+      }
+  }
+
+  // Calculer et afficher le score total si tous les quiz sont complétés
+  const allQuizIds = Object.keys(quizData).map(Number);
+  const completedQuizIds = Object.keys(completedQuizzesScores).map(Number);
+
+  // Vérifier si tous les quiz ont été complétés
+  const allCompleted = allQuizIds.length === completedQuizIds.length && 
+                       allQuizIds.every(id => completedQuizIds.includes(id));
+
+  let totalScoreDisplay = document.getElementById('total-score-display');
+  if (allCompleted) {
+      let totalOverallScore = 0;
+      let totalOverallQuestions = 0;
+      for (const id in quizData) {
+          totalOverallScore += completedQuizzesScores[id];
+          totalOverallQuestions += quizData[id].questions.length;
+      }
+      
+      if (!totalScoreDisplay) {
+          totalScoreDisplay = document.createElement('p');
+          totalScoreDisplay.id = 'total-score-display';
+          // Insérer après la section de sélection des quiz
+          quizSelectionSection.parentNode.insertBefore(totalScoreDisplay, quizSelectionSection.nextElementSibling);
+      }
+      totalScoreDisplay.innerHTML = `**Score total pour tous les quiz : ${totalOverallScore} / ${totalOverallQuestions}**`;
+      totalScoreDisplay.style.textAlign = 'center';
+      totalScoreDisplay.style.fontSize = '20px';
+      totalScoreDisplay.style.marginTop = '20px';
+      totalScoreDisplay.style.fontWeight = 'bold';
+      totalScoreDisplay.style.color = '#0ea497'; // Couleur du thème
+  } else {
+      if (totalScoreDisplay) {
+          totalScoreDisplay.remove(); // Supprimer si tous les quiz ne sont pas encore faits
+      }
+  }
+
+  // Réinitialisation pour le prochain quiz
+  currentQuizId = null; 
   currentQuestionIndex = 0;
   score = 0;
 }
